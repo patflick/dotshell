@@ -49,6 +49,9 @@ alias killfg='pkill -9 -P $$'
 # kill chromium
 alias kill-chrome='killall -s SIGKILL chromium-browser'
 
+# Pretti-fy default `pstree` command
+alias pstree='pstree --highlight-all --color age'
+
 #############
 #  apt-get  #
 #############

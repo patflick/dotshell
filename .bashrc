@@ -2,10 +2,11 @@
 [ -z "$PS1" ] && return
 
 # load all config dot files
-. $HOME/.shell/*.sh
-. $HOME/.shell/*.bash
-
-# load powerline
-#. $HOME/.shell/load_powerline
+for f in ~/.shell/*.sh; do
+  source "$f"
+done
+for f in ~/.shell/*.bash; do
+  source "$f"
+done
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash

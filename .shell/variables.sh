@@ -3,7 +3,7 @@ export PATH=$PATH:$HOME/.local/bin:$HOME/bin
 
 # Limit default available memory for each bash/zsh session to 4GB
 # This is to avoid thrashing and OOM instead.
-ulimit -v 4000000
+#ulimit -v 4000000
 
 # set default apps
 export EDITOR=vim
