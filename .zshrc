@@ -86,8 +86,13 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':fzf-tab:*' switch-group ',' '.'
 
 # Load FZF config and default keybindings
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-source /usr/share/doc/fzf/examples/completion.zsh
-source /usr/share/doc/fzf/examples/key-bindings.zsh
-
-
+my_fzf_init() {
+  [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+  source /usr/share/doc/fzf/examples/completion.zsh
+  source /usr/share/doc/fzf/examples/key-bindings.zsh
+}
+# Fix fzf ctrl+r history search in with jeffreytse/zsh-vi-mode plugin
+# Keybindings need to be loaded after the vim plugin is initialized to avoid
+# overwriting keybindings
+zvm_after_init_commands+=(my_fzf_init)
+#zvm_bindkey viins '^R' fzf-history-widget
