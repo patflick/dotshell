@@ -90,7 +90,9 @@ my_fzf_init() {
   [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
   source /usr/share/doc/fzf/examples/completion.zsh
   source /usr/share/doc/fzf/examples/key-bindings.zsh
+  enable-fzf-tab
 }
+my_fzf_init
 # Fix fzf ctrl+r history search in with jeffreytse/zsh-vi-mode plugin
 # Keybindings need to be loaded after the vim plugin is initialized to avoid
 # overwriting keybindings
