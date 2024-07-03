@@ -84,6 +84,7 @@ zstyle ':completion:*:descriptions' format '[%d]'
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 # switch group using `,` and `.`
 zstyle ':fzf-tab:*' switch-group ',' '.'
+zstyle ':fzf-tab:*' fzf-min-height 10
 
 # Load FZF config and default keybindings
 my_fzf_init() {

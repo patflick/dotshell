@@ -393,3 +393,15 @@ function compressvecpdf() {
   rm -r /tmp/pdfcomp
 }
 
+# docker shell with carry-along bash settings
+function dockersh() {
+  # uses gzip and base64 to compress&encode settings into a variable
+  # example pipeline:
+  #      echo "hello world" | gzip | base64 -w 0 | base64 -d | gunzip
+
+  # base64 encode limited set of my bashrc
+  BASHRC64=$(cat ~/.shell/aliases.sh ~/.shell/color_names.sh ~/.shell/bash_prompt.bash | gzip | base64 -w 0)
+  # we need to nest bash sessions to get an interactive shell with the extracted bashrc
+  docker run --interactive --tty $@ /bin/bash -i -c "BASHRC64=$BASHRC64; /bin/bash --rcfile <(echo \$BASHRC64 | base64 -d | gunzip) -i"
+}
+
